@@ -21,12 +21,10 @@ def customer():
 
     """Consumidor"""
 
-    count = 1
     while True:
-        baozi = q.get()
+        count = q.get()
         print(f"El consumidor está almacenando el elemento {count}")
-        count+=1
-        q.task_done() # Envía una señal después de comer
+        q.task_done() # Envía una señal después de almacenar el elemento
         time.sleep(1)
 
 def main():
