@@ -10,3 +10,31 @@ Ambos bucles estan comunicados gracias al metodo task_done(), este metodo lo pod
 # Conclusión
 
 Lo que logramos es ahorrar tiempo, no en etse caso, porque el metodo del Consumidor tiene la funcion time.sleep(1) que hace que el programa se pause por un segundo cada vez que el Consumidor "almacena elementos", pero durante ese tiempo, la señal ha llegado al Productor y el Productor genera datos nuevos en ese tiempo.
+
+# Código relevante
+
+```
+
+    def producer():
+
+        """Productor"""
+
+        count = 1
+        while True:
+            q.join()
+            q.put(count)
+            print(f"Está produciendo el elemento {count}")
+            count+=1
+
+    def customer():
+
+        """Consumidor"""
+
+        while True:
+            count = q.get()
+            print(f"El consumidor está almacenando el elemento {count}")
+            q.task_done() 
+            time.sleep(1)
+
+
+```
