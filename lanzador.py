@@ -3,7 +3,6 @@ from threading import Thread
 import time
 
 # Crear cola
-
 q = Queue(10)
 
 def producer():
